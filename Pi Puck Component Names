@@ -1,0 +1,38 @@
+Pi Puck Component Names
+
+left wheel motor
+left wheel sensor
+right wheel motor
+right wheel sensor
+ps0
+ps1
+ps2
+ps3
+ps4
+ps5
+ps6
+ps7
+ls0
+ls1
+ls2
+ls3
+ls4
+ls5
+ls6
+ls7
+camera
+led0
+led1
+led2
+led3
+led4
+led5
+led6
+led7
+led8
+led9
+accelerometer
+gyro
+receiver
+emitter
+speaker
