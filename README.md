@@ -1,82 +1,60 @@
-# 🤖🏴‍☠️ Tail Tag: Multi-Robot Communication Game
+# Distributed Robotics: Swarm Catcher
+
+A 2D swarm robotics simulation where reactive catcher agents coordinate to intercept Pi-puck targets. Built to study how swarm size and target distribution affect capture efficiency.
+
+---
 
 ## Overview
 
-Tail Tag is a multi-robot game developed for studying communication and coordination between autonomous robots in a shared environment.
+A fixed set of **M** Pi-puck targets are scattered across a bounded field. **N** catcher agents, the independent variable, use a reactive swarm algorithm to find and clear them all. Agents have no global map; they sense only nearby neighbors and act on local rules.
 
-The project simulates multiple Pi-Puck robots moving inside an arena with obstacles. At any given time, one robot possesses a virtual "tail". The objective of the remaining robots is to capture the tail by approaching the current holder.
-
-Whenever a capture occurs, robots communicate the ownership change through message exchange, allowing all agents to maintain a consistent view of the game state.
-
-The project focuses on:
-
-* Multi-robot communication
-* Distributed decision making
-* Autonomous navigation
-* Obstacle avoidance
-* Event synchronization between agents
+The simulation terminates when all pucks are captured and logs performance metrics for batch analysis.
 
 ---
 
-## Game Rules
+## Parameters
 
-1. A single robot starts the game holding the tail.
-2. Robots without the tail attempt to capture it.
-3. A capture occurs when a robot reaches a predefined distance threshold from the tail holder.
-4. After a successful capture:
+| Parameter    | Description                                              |
+|--------------|----------------------------------------------------------|
+| `FIELD_SIZE` | Dimensions of the bounded 2D simulation area             |
+| `N`          | Number of catcher agents *(independent test variable)*   |
+| `M`          | Fixed total number of Pi-puck targets to capture         |
+| `SPACING`    | Spatial distribution/variance for puck spawning (slider) |
+| `SENSE_RAD`  | Proximity radius `r` for detecting neighboring catchers  |
+| `CATCH_RAD`  | Interception threshold distance to clear a puck          |
 
-   * The previous holder loses the tail.
-   * The capturing robot becomes the new holder.
-   * A communication message is broadcast to all robots.
-5. The game runs for a fixed duration.
-6. The robot holding the tail when the timer expires is declared the winner.
+### Data Structures
 
----
-
-## Communication Model
-
-Robots communicate ownership changes through broadcast messages.
-
-Example:
-
-```json
-{
-  "event": "tail_transfer",
-  "from": "robot_2",
-  "to": "robot_4",
-  "timestamp": 125.3
-}
-```
-
-These messages ensure that all robots maintain a synchronized understanding of the current tail holder.
+- **Agents List** - array of objects: `[x, y, vx, vy]`
+- **Pucks List** - array of coordinates: `[[x1, y1], [x2, y2], ..., [xM, yM]]`
 
 ---
 
-## Robot Behaviors
+## Algorithm
 
-### Tail Holder
+### Phase 1 - Initialization
 
-* Avoid obstacles
-* Move away from nearby robots
-* Attempt to survive until the end of the game
+- Spawn **M** pucks using a random distribution scaled by `SPACING`.
+- Spawn **N** catcher agents at random or clustered initial positions.
 
-### Chasers
+### Phase 2 - Reactive Swarm Loop *(per time-step)*
 
-* Navigate toward the current tail holder
-* Avoid obstacles
-* Attempt to capture the tail
+For each agent **A**:
 
----
+1. **Neighbor Detection** - find all agents within `SENSE_RAD`.
+2. **Swarm Attraction** - if neighbors exist, compute their center of mass and steer toward it:
+   ```
+   Center_X = mean(neighbor x positions)
+   Center_Y = mean(neighbor y positions)
+   ```
+3. **Capture Check** - if `distance(A, puck P) ≤ CATCH_RAD`, remove **P** from the pucks list.
+4. **Kinematics Update** - advance along heading vector; enforce field boundaries.
 
-## Environment
+### Phase 3 - Batch Automation & Metrics
 
-The simulation consists of:
-
-* Multiple Pi-Puck robots
-* A bounded arena
-* Static obstacles
-* Communication between robots
-* Fixed game duration
+- Run until `len(Pucks List) == 0`.
+- Log `[CATCHER_COUNT, PUCK_SPACING, TOTAL_STEPS]` to CSV on termination.
+- Automate across multiple (`N`, `SPACING`) combinations to generate report charts.
 
 ---
 
@@ -85,19 +63,6 @@ The simulation consists of:
 ```text
 WIP
 ```
-
----
-
-## Objectives
-
-This project aims to demonstrate how communication can be integrated into a simple multi-robot scenario while maintaining clear and observable agent interactions.
-
-The game provides an intuitive environment for experimenting with:
-
-* Communication protocols
-* Robot coordination
-* Distributed systems concepts
-* Multi-agent behavior
 
 ---
 
