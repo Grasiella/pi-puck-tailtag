@@ -3,174 +3,48 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/CorrodedMetal.proto"
+IMPORTABLE EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+IMPORTABLE EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/Pi-puck.proto"
 
 WorldInfo {
+  basicTimeStep 32
 }
+
 Viewpoint {
-  orientation -0.3625089915799094 0.33798313518230794 0.8685359125309988 1.7802553080080743
-  position 0.4397513743073308 -1.78479647684874 1.98414022699551
+  orientation -0.3075 0.1320 0.9423 2.37
+  position 2.35 -1.64 1.55
 }
-Solid {
-  translation 0.262524 -0.0156791 -1.10865e-15
-  children [
-    Shape {
-      appearance CorrodedMetal {
-      }
-      geometry Cylinder {
-        height 0.1
-        radius 0.05
-      }
-    }
-  ]
-  name "cilindro"
-}
-Solid {
-  translation -0.0420924 0.292347 -6.12513e-14
-  children [
-    Shape {
-      appearance CorrodedMetal {
-      }
-      geometry Cylinder {
-        height 0.1
-        radius 0.05
-      }
-    }
-  ]
-  name "cilindro(1)"
-}
-Solid {
-  translation -0.360517 0.610493 -4.63978e-14
-  children [
-    Shape {
-      appearance CorrodedMetal {
-      }
-      geometry Cylinder {
-        height 0.1
-        radius 0.05
-      }
-    }
-  ]
-  name "cilindro(2)"
-}
-Solid {
-  translation 0.270939 0.619314 -6.18117e-15
-  children [
-    Shape {
-      appearance Appearance {
-        material Material {
-        }
-        texture ImageTexture {
-        }
-        textureTransform TextureTransform {
-        }
-      }
-      geometry Box {
-        size 0.1 0.1 0.1
-      }
-    }
-  ]
-  name "cubo"
-}
-Solid {
-  translation -0.340659 0.0130757 -1.91932e-14
-  rotation 0 0 1 4.692820414042842e-06
-  children [
-    Shape {
-      appearance Appearance {
-        material Material {
-        }
-        texture ImageTexture {
-        }
-        textureTransform TextureTransform {
-        }
-      }
-      geometry Box {
-        size 0.1 0.1 0.1
-      }
-    }
-  ]
-  name "cubo(1)"
-}
+
 TexturedBackground {
 }
+
 TexturedBackgroundLight {
   texture "stadium"
 }
+
 RectangleArena {
-  translation -0.0427149 0.291431 2.76698e-15
   floorSize 2 1
+  wallHeight 0.12
   floorAppearance Parquetry {
     type "light strip"
   }
 }
-E-puck {
-  hidden position_0_0 9287.499825247165
-  hidden position_0_1 11186.659584115832
-  hidden linearVelocity_0 0.03729676475646796 0.04204847252826491 2.3006284011294876e-08
-  hidden angularVelocity_0 -0.006600171882268052 0.005863393623974004 0.08997029027737065
-  hidden translation_1 0 0.025999999999999992 0.02
-  hidden rotation_1 0 1 0 0.9519412357362501
-  hidden linearVelocity_1 0.03577367750331109 0.040331106058270706 -8.155619708647298e-09
-  hidden angularVelocity_1 -2.0083016898404287 1.7812949661780604 0.09170660153581246
-  hidden translation_2 0 -0.025999999999999995 0.02
-  hidden rotation_2 0 1 0 2.589737336168402
-  hidden linearVelocity_2 0.03887889940695606 0.04383190469426649 7.0072842070269075e-09
-  hidden angularVelocity_2 -2.1997598383690544 1.9512547831682334 0.09197643377252103
-  translation -0.14575065350803057 -0.015048030266359579 -6.431941158224069e-05
-  rotation -0.00010931272727692217 -9.703479772410106e-05 -0.9999999893174877 -0.8468781300310626
-  name "1"
-}
-E-puck {
-  hidden position_0_0 7978.976144468134
-  hidden position_0_1 10535.977018948834
-  hidden linearVelocity_0 0.050437461065784644 0.02440948100596692 -3.091192297341736e-08
-  hidden angularVelocity_0 -0.004689624212329043 0.009711516450049546 0.09541287414313465
-  hidden translation_1 0 0.026000000000000002 0.02
-  hidden rotation_1 0 -0.9999999999999999 0 0.6691956499404186
-  hidden linearVelocity_1 0.048253454163675255 0.023352658111591488 1.2470141975032643e-08
-  hidden angularVelocity_1 -1.1625502618352372 2.4020556307675442 0.09712687038639271
-  hidden translation_2 0 -0.026000000000000006 0.02
-  hidden rotation_2 0 1 0 5.358444115846639
-  hidden linearVelocity_2 0.052718396250617965 0.025513146905892962 -1.1231273682490578e-08
-  hidden angularVelocity_2 -1.2806833642585926 2.6464197864089227 0.09739551049010343
-  translation 0.047710959359283586 0.15420487796416646 -6.431172398038698e-05
-  rotation -3.400911408718232e-05 -0.0009813860632219258 -0.9999995178622711 -0.4525481209479967
-  name "2"
-}
-E-puck {
-  hidden position_0_0 9540.211925154817
-  hidden position_0_1 11187.23442658723
-  hidden linearVelocity_0 -0.037528369143073635 -0.042006741695794436 5.476406387874636e-08
-  hidden angularVelocity_0 0.0002347787624093112 -0.0002022465112061242 0.08739083225241101
-  hidden translation_1 0 0.02599999999999997 0.02
-  hidden rotation_1 0 1 0 2.336628856205164
-  hidden linearVelocity_1 -0.036015474403025084 -0.04031353465333213 -1.0004548109644157e-08
-  hidden angularVelocity_1 2.0076923413491006 -1.7935722219134995 0.08912919987196574
-  hidden translation_2 0 -0.026 0.02
-  hidden rotation_2 0 1 0 3.1645798075667715
-  hidden linearVelocity_2 -0.03904316452578785 -0.04370286282287274 8.421177412633452e-09
-  hidden angularVelocity_2 2.19304099001421 -1.9592822597279393 0.08939776505094615
-  translation -0.9114050620895534 0.5993626464774675 -6.43143444016038e-05
-  rotation 0.00031363241335435107 7.184337039272095e-05 -0.9999999482366184 2.2983635698108884
-  name "3"
-}
-E-puck {
-  hidden position_0_0 6900.121873098953
-  hidden position_0_1 10036.893558820746
-  hidden linearVelocity_0 0.04206914893135814 0.03720123970607588 6.487284794192408e-08
-  hidden angularVelocity_0 0.008481556681041941 -0.009595616563243264 0.09160523829165755
-  hidden translation_1 0 0.026 0.02
-  hidden rotation_1 0 1 0 1.1844058157671222
-  hidden linearVelocity_1 0.04023702235192929 0.03558050038540616 -9.482260417369816e-09
-  hidden angularVelocity_1 -1.7715887358098352 2.003365962866586 0.09332080441754952
-  hidden translation_2 0 -0.02599999999999999 0.02
-  hidden rotation_2 0 -0.9999999999999999 0 3.636562052233224
-  hidden linearVelocity_2 0.04380622846166516 0.03873647275512891 -9.493105640202594e-10
-  hidden angularVelocity_2 -1.944180166340904 2.198706270814531 0.093588259595871
-  translation -0.550925355472731 -0.06651823051758435 -6.42941192668476e-05
-  rotation 0.0008544253730338457 -0.0018121541377217063 0.9999979930253176 0.72578304602383
-  name "4"
+
+DEF SUPERVISOR Robot {
+  name "Supervisor"
+  supervisor TRUE
+  controller "supervisor"
+
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.15 0.15 0.15
+        roughness 1
+      }
+      geometry Box {
+        size 0.04 0.04 0.04
+      }
+    }
+  ]
 }
