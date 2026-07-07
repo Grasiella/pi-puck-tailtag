@@ -7,8 +7,8 @@ robot = Robot()
 
 TIME_STEP = int(robot.getBasicTimeStep())
 MAX_SPEED = 6.28
-ESCAPE_SPEED = 1.0
-TURN_SPEED = 2.5
+ESCAPE_SPEED = 3.1
+TURN_SPEED = 4
 
 left_motor = robot.getDevice(
     "left wheel motor"

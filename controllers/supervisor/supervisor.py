@@ -19,10 +19,9 @@ ARENA_Y = 1.0
 SENSOR_RANGE = 0.35
 CAPTURE_RADIUS = 0.071
 
-RESULTS_PATH = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "results.csv",
-)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+RESULTS_PATH = os.path.join(PROJECT_ROOT, "results", "results.csv")
+os.makedirs(os.path.dirname(RESULTS_PATH), exist_ok=True)
 
 root = robot.getRoot()
 children = root.getField(
