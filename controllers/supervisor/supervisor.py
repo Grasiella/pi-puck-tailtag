@@ -12,6 +12,7 @@ NUM_CATCHERS = int(os.environ.get("NUM_CATCHERS", 10))
 NUM_RUNNERS = int(os.environ.get("NUM_RUNNERS", 10))
 
 ALPHA = float(os.environ.get("ALPHA", 0.0))
+AUTO_QUIT = os.environ.get("AUTO_QUIT", "0") == "1"
 
 ARENA_X = 2.0
 ARENA_Y = 1.0
@@ -277,4 +278,7 @@ while robot.step(TIME_STEP) != -1:
 
         log_results()
 
-        robot.simulationSetMode(Supervisor.SIMULATION_MODE_PAUSE)
+        if AUTO_QUIT:
+            robot.simulationQuit(0)
+        else:
+            robot.simulationSetMode(Supervisor.SIMULATION_MODE_PAUSE)
